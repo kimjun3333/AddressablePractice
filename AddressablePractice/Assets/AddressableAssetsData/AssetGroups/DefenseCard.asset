@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: DefenseCard
+  m_EditorClassIdentifier: 
+  m_GroupName: DefenseCard
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 948966476a590b947ab6a7d8bd4374b5
+  m_SerializeEntries:
+  - m_GUID: 00b3eaed8ea450e4aacf745897bedb0d
+    m_Address: Wall
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Defense
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ede5bd5981379c458a9307d27af2a2a
+    m_Address: Defense
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Defense
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5354ba4eff4feb74e90708bf3b136f92
+    m_Address: Diamond
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Defense
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bebab0f048e48494b83b2b58ebd32e6f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8ae9bc5a3c9d6c0478032b74c1703574, type: 2}
+    - {fileID: 11400000, guid: 1a102958353ccf44cacfab540a5cc8ab, type: 2}
