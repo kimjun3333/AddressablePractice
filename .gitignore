@@ -1,5 +1,5 @@
 # ============================================================
-# Unity Git Ignore (기반: GitHub 공식 Unity.gitignore)
+# Unity Git Ignore (Updated for 2025 / Addressables-safe)
 # ============================================================
 
 .utmp/
@@ -16,7 +16,7 @@
 *.blend1
 *.blend1.meta
 
-# MemoryCaptures can get excessive in size.
+# MemoryCaptures can get excessive in size
 [Mm]emoryCaptures/
 
 # Recordings can get excessive in size
@@ -29,11 +29,10 @@
 [Aa]ssets/Plugins/Editor/JetBrains*
 *.DotSettings.user
 
-# Visual Studio / VSCode
+# Visual Studio / VSCode / Rider
 .vs/
-.gradle/
-.idea/                # 💡 IntelliJ / Rider 설정
-.vscode/              # 💡 VSCode 환경설정 폴더 (필요하면 아래 두 줄 제외)
+.idea/
+.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
 
@@ -70,8 +69,8 @@ mono_crash.*
 *.unitypackage
 *.unitypackage.meta
 *.app
-*.exe                 # 💡 Windows 빌드 산출물
-*.zip                 # 💡 패키징된 결과물
+*.exe
+*.zip
 
 # Crashlytics
 crashlytics-build.properties
@@ -79,16 +78,30 @@ crashlytics-build.properties
 # TestRunner
 InitTestScene*.unity*
 
-# Addressables
-ServerData/
-[Aa]ssets/StreamingAssets/aa*
-[Aa]ssets/AddressableAssetsData/link.xml*
-[Aa]ssets/Addressables_Temp*
-[Aa]ssets/AddressableAssetsData/*/*.bin*
-[Aa]ssets/AddressableAssetsData/*/*.hash   # 💡 Addressables hash 파일 추가
-[Aa]ssets/AddressableAssetsData/*/catalog*.json  # 💡 Addressables catalog 파일 추가
+# ============================================================
+# Addressables (safe settings included)
+# ============================================================
 
+# Ignore runtime build data
+/ServerData/
+[Aa]ssets/Addressables_Temp*/
+[Aa]ssets/StreamingAssets/aa*/
+
+# Keep essential Addressables data (Settings, Groups, etc.)
+!Assets/AddressableAssetsData/
+!Assets/AddressableAssetsData/**/*.asset
+!Assets/AddressableAssetsData/**/*.meta
+!Assets/AddressableAssetsData/**/*.json
+
+# Ignore Addressables build outputs
+[Aa]ssets/AddressableAssetsData/*/*.bin*
+[Aa]ssets/AddressableAssetsData/*/*.hash
+[Aa]ssets/AddressableAssetsData/*/catalog*.json
+[Aa]ssets/AddressableAssetsData/link.xml*
+
+# ============================================================
 # Visual Scripting auto-generated
+# ============================================================
 [Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
 [Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
 [Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
@@ -97,28 +110,36 @@ ServerData/
 # Auto-generated test scenes
 [Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
-# 💡 PlasticSCM 잔여 데이터
-.gluon/
-plastic.workspace
-
-# 💡 Cache / Build Artifacts (새로운 Unity 버전)
+# ============================================================
+# Unity additional cache folders
+# ============================================================
 DerivedDataCache/
 Artifacts/
 SysrootBuildOutput/
 
-# 💡 Unity Collaborate(쓰지 않는다면 무시)
+# ============================================================
+# Unity Collaborate / Plastic SCM
+# ============================================================
 [Cc]ollab/
+.gluon/
+plastic.workspace
 
-# 💡 OS / 시스템 파일
+# ============================================================
+# Unity Cloud Build / Misc
+# ============================================================
+[Aa]ssets/CloudBuild/
+[Aa]ssets/StreamingAssets/build_report.json
+
+# ============================================================
+# OS / System files
+# ============================================================
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# 💡 Unity Cloud / Cloud Build 잔여물
-[Aa]ssets/CloudBuild/
-[Aa]ssets/StreamingAssets/build_report.json
-
-# 💡 유지해야 할 핵심 폴더
+# ============================================================
+# Keep essential project structure
+# ============================================================
 !Assets/
 !ProjectSettings/
 !Packages/
