@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 {
-    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Practice";
+    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Card";
     public async Task Init()
     {
         Debug.Log("GoogleLoader 데이터 로드 및 패치 시작.");

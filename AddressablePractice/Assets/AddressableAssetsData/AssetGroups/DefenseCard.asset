@@ -17,20 +17,20 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 948966476a590b947ab6a7d8bd4374b5
   m_SerializeEntries:
-  - m_GUID: 00b3eaed8ea450e4aacf745897bedb0d
-    m_Address: Wall
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Defense
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0ede5bd5981379c458a9307d27af2a2a
-    m_Address: Defense
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Defense
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5354ba4eff4feb74e90708bf3b136f92
+  - m_GUID: 151dce04c1395e843b717e8cdb044090
     m_Address: Diamond
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Defense
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80b34c661788abb418b4ea3d3e178c9e
+    m_Address: Shield
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Defense
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f0fd8bb71d77984db54cd8d7dc43954
+    m_Address: Wall
     m_ReadOnly: 0
     m_SerializedLabels:
     - Defense

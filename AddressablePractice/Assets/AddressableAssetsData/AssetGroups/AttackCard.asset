@@ -17,19 +17,19 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ffc3f7145603dc74da9763883cebee74
   m_SerializeEntries:
-  - m_GUID: 7ad5c5a9713d8084ab760dce693ade0b
-    m_Address: Breath
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 88d888b508dcb4242904e574a1dfc206
+  - m_GUID: 161a28ac004bf494e9ca4fb68ab0c175
     m_Address: Smash
     m_ReadOnly: 0
     m_SerializedLabels:
     - Attack
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a8ef5c11bf88f074e94fe806dbf7e361
+  - m_GUID: cd81727873703314d945093b4cd54a20
+    m_Address: Breath
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e745e71ecd39f694698b7b2f080aec20
     m_Address: Attack
     m_ReadOnly: 0
     m_SerializedLabels:

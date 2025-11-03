@@ -19,7 +19,6 @@ public class CardSheetData
     public int value;
     public string description;
     public int cost; 
-
 }
 
 [CreateAssetMenu(fileName = "CardSO", menuName = "SO/CardSO")]
@@ -38,6 +37,7 @@ public class CardSO : BaseSO
         Description = data.description;
         value = data.value;
         cost = data.cost;
+        Type = "Card"; //임시
 
         if (value != data.value)
         {

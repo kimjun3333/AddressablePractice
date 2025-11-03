@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 public class GoogleSheetToSOEditor : EditorWindow
 {
-    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Practice"; //URL 주소
+    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Card"; //URL 주소
 
     /// <summary>
     /// Unity메뉴바에 표시되는 메뉴 항목 등록
@@ -32,7 +32,7 @@ public class GoogleSheetToSOEditor : EditorWindow
         //버튼 클릭시 ImportFromSheet() 비동기 실행
         if(GUILayout.Button("불러와서 SO생성 / 갱신"))
         {
-            _ = ImportFromSheet();
+            _ = ImportCardData();
         }
     }
 
@@ -40,7 +40,7 @@ public class GoogleSheetToSOEditor : EditorWindow
     /// 데이터를 비동기로 불러오고 데이터 기반으로 SO를 생성, 갱신
     /// </summary>
     /// <returns></returns>
-    private async Task ImportFromSheet()
+    private async Task ImportCardData()
     {
         List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(url);
 
@@ -50,7 +50,7 @@ public class GoogleSheetToSOEditor : EditorWindow
             return;
         }
 
-        SOGenerator.CreateOrUpdateCardSOs(dataList);
+        SOGenerator.CreateOrUpdateSOs<CardSO, CardSheetData>(dataList);
     }
 }
 #endif
