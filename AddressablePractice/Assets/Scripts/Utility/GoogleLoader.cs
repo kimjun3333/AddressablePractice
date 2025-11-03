@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,63 +9,79 @@ using UnityEngine;
 /// </summary>
 public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 {
-    string cardURL = URLContainer.cardURL;
-    string artifactURL = URLContainer.artifactURL;
-
     public async Task Init()
     {
         Debug.Log("GoogleLoader 데이터 로드 및 패치 시작.");
-
         int totalUpdated = 0;
 
-        var cardData = await GoogleSheetLoader.LoadSheetData<CardSheetData>(cardURL);
-        if(cardData != null && cardData.Count > 0)
+        foreach(var kvp in URLContainer.SheetMap)
         {
-            int updated = UpdateSOData<CardSO, CardSheetData>(cardData);
-            Debug.Log($"GoogleLoader : 카드 SO {updated}개 갱신 완료");
-            totalUpdated += updated;
-        }
-        else
-        {
-            Debug.LogError("GoogleLoader : 카드 시트 데이터를 불러오지 못했습니다.");
+            Type soType = kvp.Key;
+            
+            var (dataType, url) = kvp.Value;
+
+            try
+            {
+
+                int updated = await LoadAndApply(soType, dataType, url);
+                totalUpdated += updated; //이부분은 추후 삭제할듯
+
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"GoogleLoader : {soType.Name} 패치중 오류 {ex.Message}");
+            }
         }
 
-        var artifactData = await GoogleSheetLoader.LoadSheetData<ArtifactSheetData>(artifactURL);
-        if(artifactData != null && artifactData.Count > 0)
-        {
-            int updated = UpdateSOData<ArtifactSO, ArtifactSheetData>(artifactData);
-            Debug.Log($"GoogleLoader : 유물 SO {updated}개 갱신 완료");
-            totalUpdated += updated;
-        }
-        else
-        {
-            Debug.LogError("GoogleLoader : 유물 시트 데이터를 불러오지 못했습니다.");
-        }
-
-        Debug.Log($"GoogleLoader : 전체 SO 패치 완료 총 {totalUpdated}개 갱신됨");
+        Debug.Log($"GoogleLoader : 전체 SO 패치 완료 총 {totalUpdated}개 갱신");
     }
 
-    private int UpdateSOData<TSO, TData>(List<TData> dataList) where TSO : BaseSO where TData : BaseSheetData
+    private async Task<int> LoadAndApply(Type soType, Type dataType, string url)
+    {
+        var method = typeof(GoogleSheetLoader).GetMethod("LoadSheetData")?.MakeGenericMethod(dataType);
+        var task = method?.Invoke(null, new object[] { url }) as Task;
+        await task.ConfigureAwait(false);
+
+        var resultProp = task?.GetType().GetProperty("Result");
+        var dataList = resultProp?.GetValue(task) as System.Collections.IList;
+
+        if(dataList == null || dataList.Count == 0)
+        {
+            Debug.LogWarning($"GoogleLoader : {soType.Name} 시트 데이터가 비었거나 로드 실패");
+            return 0;
+        }
+
+        return UpdateSOData(soType, dataType, dataList);
+    }
+    private int UpdateSOData(Type soType, Type dataType, System.Collections.IList dataList)
     {
         int updatedCount = 0;
 
         foreach(var kvp in AddressableLoader.Instance.loadedData)
         {
-            string label = kvp.Key;
-            IList<ScriptableObject> soList = kvp.Value;
-
-            foreach(var so in soList)
+            foreach(var so in kvp.Value)
             {
-                if (so is not BaseSO baseSO) continue;
+                if (so.GetType() != soType || so is not BaseSO baseSO) continue;
 
-                TData match = dataList.Find(x => x.ID == baseSO.ID || x.Name == baseSO.Name);
-                if (match == null) continue;
+                foreach(var data in dataList)
+                {
+                    var idField = dataType.GetField("ID");
+                    var nameField = dataType.GetField("Name");
 
-                baseSO.ApplyData(match);
-                updatedCount++;
+                    string dataID = idField?.GetValue(data) as string;
+                    string dataName = nameField?.GetValue(data) as string;
+
+                    if(dataID == baseSO.ID || dataName == baseSO.Name)
+                    {
+                        baseSO.ApplyData(data);
+                        updatedCount++;
+                        break;
+                    }
+                }
             }
         }
 
+        Debug.Log($"GoogleLoader : {soType.Name} SO {updatedCount}개 갱신 완료");
         return updatedCount;
     }
 }

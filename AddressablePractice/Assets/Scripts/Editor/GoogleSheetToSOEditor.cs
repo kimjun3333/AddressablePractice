@@ -1,18 +1,17 @@
 #if UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using System.Reflection;
 
 /// <summary>
 /// Google스프레드 시트 데이터 기반으로 SO를 생성, 갱신해주는 커스텀 툴 
 /// </summary>
 public class GoogleSheetToSOEditor : EditorWindow
 {
-    string cardURL = URLContainer.cardURL;
-    string artifactURL = URLContainer.artifactURL;
-
     /// <summary>
     /// Unity메뉴바에 표시되는 메뉴 항목 등록
     /// </summary>
@@ -28,53 +27,80 @@ public class GoogleSheetToSOEditor : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("Google Sheet URL", EditorStyles.boldLabel);
-
-        cardURL = EditorGUILayout.TextField("Card Sheet URL", cardURL);
-        artifactURL = EditorGUILayout.TextField("Artifact Sheet URL", artifactURL);
-
         GUILayout.Space(10);
 
-
         //버튼 클릭시 ImportFromSheet() 비동기 실행
-        if(GUILayout.Button("카드 SO생성 / 갱신"))
+        
+        foreach(var kvp in URLContainer.SheetMap)
         {
-            _ = ImportCardData();
+            Type soType = kvp.Key;
+            var (dataType, url) = kvp.Value;
+
+            GUILayout.Label($"{soType.Name} : {url}", EditorStyles.miniLabel);
+
+            if(GUILayout.Button($"{soType.Name} SO 생성 / 갱신"))
+            {
+                _ = ImportData(soType, dataType, url);
+            }
         }
 
-        if(GUILayout.Button("유물 SO생성 / 갱신"))
+        GUILayout.Space(10);
+        if(GUILayout.Button("모든 시트SO 생성 / 갱신"))
         {
-            _ = ImportArtifactData();
+            _ = ImportAllData();
         }
+       
     }
 
     /// <summary>
     /// 데이터를 비동기로 불러오고 데이터 기반으로 SO를 생성, 갱신
     /// </summary>
     /// <returns></returns>
-    private async Task ImportCardData()
+    
+    private async Task ImportData(Type soType, Type dataType, string url)
     {
-        List<CardSheetData> dataList = await GoogleSheetLoader.LoadSheetData<CardSheetData>(cardURL);
+        var method = typeof(GoogleSheetLoader).GetMethod("LoadSheetData")?.MakeGenericMethod(dataType);
+
+        if (method == null)
+        {
+            Debug.LogError($"[ERROR] {soType.Name} : GoogleSheetLoader 메서드 못찾음");
+            return;
+        }
+
+        var task = method?.Invoke(null, new object[] { url }) as Task;
+        //await task.ConfigureAwait(false);
+        await task;
+
+        var resultProp = task?.GetType().GetProperty("Result");
+        var dataList = resultProp?.GetValue(task) as System.Collections.IList;
 
         if(dataList == null)
         {
-            Debug.LogError("GoogleSheetToSOEditor : 데이터 불러오기 실패");
+            Debug.LogError($"GoogleSheetToSOEditor : {soType.Name} 시트 데이터 불러오기 실패");
             return;
         }
 
-        SOGenerator.CreateOrUpdateSOs<CardSO, CardSheetData>(dataList);
+        var generatorMethod = typeof(SOGenerator).GetMethod("CreateOrUpdateSOs", BindingFlags.Public | BindingFlags.Static)?.MakeGenericMethod(soType, dataType);
+
+        if (generatorMethod == null)
+        {
+            Debug.LogError($"[ERROR] {soType.Name} : SOGenerator 메서드 찾기 실패 ❌");
+            return;
+        }
+
+        generatorMethod?.Invoke(null, new object[] { dataList });
+
+        Debug.Log($"GoogleSheetToSOEditor : {soType.Name} SO {dataList.Count}개 생성/갱신 완료");
     }
 
-    private async Task ImportArtifactData()
+    private async Task ImportAllData()
     {
-        List<ArtifactSheetData> dataList = await GoogleSheetLoader.LoadSheetData<ArtifactSheetData>(artifactURL);
-
-        if (dataList == null)
+        foreach(var kvp in URLContainer.SheetMap)
         {
-            Debug.LogError("GoogleSheetToSOEditor : 데이터 불러오기 실패");
-            return;
+            await ImportData(kvp.Key, kvp.Value.dataType, kvp.Value.url);
         }
 
-        SOGenerator.CreateOrUpdateSOs<ArtifactSO, ArtifactSheetData>(dataList);
+        Debug.Log("GoogleSheetToSOEditor : 모든 시트 SO 생성 / 갱신 완료");
     }
 }
 #endif
