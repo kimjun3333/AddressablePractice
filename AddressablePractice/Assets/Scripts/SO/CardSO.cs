@@ -11,14 +11,14 @@ public enum CardType
 /// 구글시트 한줄의 데이터를 담는 클래스
 /// </summary>
 [System.Serializable]
-public class CardSheetData
+public class CardSheetData //Data도 기본데이터 들어있는거 만들기
 {
     public string ID; 
-    public string cardName;
-    public string cardType; //카드의 타입
-    public int value;
-    public string description;
-    public int cost; 
+    public string Name;
+    public string CardType; //카드의 타입
+    public int Value;
+    public string Description;
+    public int Cost; 
 }
 
 [CreateAssetMenu(fileName = "CardSO", menuName = "SO/CardSO")]
@@ -33,31 +33,31 @@ public class CardSO : BaseSO
         if (sheetData is not CardSheetData data) return;
 
         ID = data.ID;
-        Name = data.cardName;
-        Description = data.description;
-        value = data.value;
-        cost = data.cost;
+        Name = data.Name;
+        Description = data.Description;
+        value = data.Value;
+        cost = data.Cost;
         Type = "Card"; //임시
 
-        if (value != data.value)
+        if (value != data.Value)
         {
-            Debug.Log($"[CardSO] {ID}: value {value} → {data.value}");
-            value = data.value;
+            Debug.Log($"[CardSO] {ID}: value {value} → {data.Value}");
+            value = data.Value;
         }
 
-        if (cost != data.cost)
+        if (cost != data.Cost)
         {
-            Debug.Log($"[CardSO] {ID}: cost {cost} → {data.cost}");
-            cost = data.cost;
+            Debug.Log($"[CardSO] {ID}: cost {cost} → {data.Cost}");
+            cost = data.Cost;
         }
 
-        if (System.Enum.TryParse(data.cardType, true, out CardType parsed))
+        if (System.Enum.TryParse(data.CardType, true, out CardType parsed))
         {
             cardType = parsed;
         }
         else
         {
-            Debug.LogError($"CardSO : {ID} : 잘못된 cardType값 {data.cardType}");
+            Debug.LogError($"CardSO : {ID} : 잘못된 cardType값 {data.CardType}");
         }
     }
 }

@@ -16,7 +16,43 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 3b925aefe0fc2954ebd783ebed1bebba
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 3ec804a5b3d3f4a4a9a20ebb7bbc3b8b
+    m_Address: Assets/SO/CardSO/Wall.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48b0c5c9a3700d64cbaece92a7b52808
+    m_Address: Assets/SO/CardSO/Shield.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5138fe1e40a40d14c81f97ea80eafd3d
+    m_Address: Assets/SO/CardSO/Breath.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 935b63a4136d15044b02d747dab1e3c6
+    m_Address: Assets/SO/CardSO/Attack.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae4add444faef914799a350e12c3cd8d
+    m_Address: Assets/SO/CardSO/Smash.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ddc50dc7b07e0574683fbd88d033a3b7
+    m_Address: Assets/SO/CardSO/Diamond.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Card
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bebab0f048e48494b83b2b58ebd32e6f, type: 2}
   m_SchemaSet:

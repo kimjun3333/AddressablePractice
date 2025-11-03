@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3b925aefe0fc2954ebd783ebed1bebba
   m_currentHash:
     serializedVersion: 2
-    Hash: c23effe38761196a850c5c2498236f5a
+    Hash: 3f06814389e89c79d0a95575ac14ec42
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -91,6 +91,7 @@ MonoBehaviour:
     - default
     - Attack
     - Defense
+    - Card
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 7a0a37a6a8b1abe4fb50d859857505ac, type: 2}

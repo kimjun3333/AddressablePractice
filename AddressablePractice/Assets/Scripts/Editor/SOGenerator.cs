@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -25,15 +25,16 @@ public static class SOGenerator
         foreach (var data in dataList)
         {
             string id = GetFieldValue<string>(data, "ID");
-            if (string.IsNullOrEmpty(id)) continue;
+            string name = GetFieldValue<string>(data, "Name");
+            if (string.IsNullOrEmpty(name)) continue;
 
-            string assetPath = $"{typeFolder}/{id}.asset";
+            string assetPath = $"{typeFolder}/{name}.asset";
             TSO so = AssetDatabase.LoadAssetAtPath<TSO>(assetPath);
 
             if (so == null)
             {
                 so = ScriptableObject.CreateInstance<TSO>();
-                so.ID = id;
+                so.Name = name;
                 AssetDatabase.CreateAsset(so, assetPath);
             }
 

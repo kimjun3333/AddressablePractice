@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,12 +8,12 @@ using UnityEngine;
 /// </summary>
 public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 {
-    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Card";
+    string cardURL = URLContainer.cardURL;
     public async Task Init()
     {
         Debug.Log("GoogleLoader 데이터 로드 및 패치 시작.");
 
-        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(url);
+        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(cardURL);
         if (dataList == null || dataList.Count == 0)
         {
             Debug.LogError($"GoogleLoader : sheet 데이터를 불러오지 못했습니다.");
@@ -34,7 +34,7 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
             {
                 if (so is not BaseSO baseSO) continue;
 
-                CardSheetData match = dataList.Find(x => x.ID == baseSO.ID || x.cardName == baseSO.Name);
+                CardSheetData match = dataList.Find(x => x.ID == baseSO.ID || x.Name == baseSO.Name);
 
                 if(match != null)
                 {

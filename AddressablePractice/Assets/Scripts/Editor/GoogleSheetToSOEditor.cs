@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 public class GoogleSheetToSOEditor : EditorWindow
 {
-    private string url = "https://opensheet.elk.sh/1A-gVODBB_1QuNV0ko6rmo7rmnOWINJLhM_hyKEv-xks/Card"; //URL 주소
+    string cardURL = URLContainer.cardURL;
 
     /// <summary>
     /// Unity메뉴바에 표시되는 메뉴 항목 등록
@@ -27,7 +27,7 @@ public class GoogleSheetToSOEditor : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("Google Sheet URL", EditorStyles.boldLabel);
-        url = EditorGUILayout.TextField("Sheet URL", url);
+        cardURL = EditorGUILayout.TextField("Sheet URL", cardURL);
 
         //버튼 클릭시 ImportFromSheet() 비동기 실행
         if(GUILayout.Button("불러와서 SO생성 / 갱신"))
@@ -42,7 +42,7 @@ public class GoogleSheetToSOEditor : EditorWindow
     /// <returns></returns>
     private async Task ImportCardData()
     {
-        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(url);
+        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(cardURL);
 
         if(dataList == null)
         {
