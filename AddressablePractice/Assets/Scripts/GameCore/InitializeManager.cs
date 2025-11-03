@@ -15,6 +15,8 @@ public class InitializeManager : Singleton<InitializeManager>
             DataManager.Instance.AddData(kvp.Key, kvp.Value);
         }
 
+        await GoogleLoader.Instance.Init();
+
         Debug.Log("모든 초기화 완료");
     }
 }
