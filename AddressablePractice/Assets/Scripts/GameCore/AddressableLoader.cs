@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+
+/// <summary>
+/// Addressable ë¹„ë™ê¸° ë¡œë“œí•˜ëŠ” ë§¤ë‹ˆì €.
+/// </summary>
 
 public class AddressableLoader : Singleton<AddressableLoader>, IInitializable
 {
@@ -12,17 +13,17 @@ public class AddressableLoader : Singleton<AddressableLoader>, IInitializable
 
     public async Task Init()
     {
-        await Addressables.InitializeAsync().Task;
+        await Addressables.InitializeAsync().Task; //Addressable ì‹œìŠ¤í…œ ì´ˆê¸°í™”
 
-        string[] labels = { "Attack", "Defense" }; //¶óº§¸ñ·Ï °ü¸® ÀÌÈÄ ¾ÈÁ¤È­ µÇ¸é ¶óº§ ÀÚµ¿ Å½»öÈÄ Ãß°¡ÇÏµµ·Ï º¯°æÇÒ°Í
+        string[] labels = { "Attack", "Defense" }; //ë¼ë²¨ëª©ë¡ ê´€ë¦¬ ì´í›„ ì•ˆì •í™” ë˜ë©´ ë¼ë²¨ ìë™ íƒìƒ‰í›„ ì¶”ê°€í•˜ë„ë¡ ë³€ê²½í• ê²ƒ
 
-        foreach(var label in labels)
+        foreach (var label in labels) //ë¼ë²¨ë³„ë¡œ ìˆœíšŒí•˜ë©´ì„œ ë¡œë“œ
         {
             var handle = Addressables.LoadAssetsAsync<ScriptableObject>(label, null);
             IList<ScriptableObject> assets = await handle.Task;
-            loadedData[label] = assets;
+            loadedData[label] = assets; //ë”•ì…”ë„ˆë¦¬ì— ë“±ë¡
         }
 
-        Debug.Log("Addressable SO ·Îµå ¿Ï·á");
+        Debug.Log("Addressable SO ë¡œë“œ ì™„ë£Œ");
     }
 }
