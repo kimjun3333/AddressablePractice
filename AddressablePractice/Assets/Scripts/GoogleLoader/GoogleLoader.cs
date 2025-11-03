@@ -22,7 +22,7 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 
         int totalUpdated = 0;
 
-        //AddressableLoader에서 로드된 데이터 순회
+        //AddressableLoader에서 로드된 데이터 순회하면서 같은 ID랑 Name의 데이터를 보고 그값을 덮어씀
         foreach (var kvp in AddressableLoader.Instance.loadedData)
         {
             string label = kvp.Key;
@@ -32,19 +32,14 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
             //해당 라벨 SO 확인
             foreach (var so in soList)
             {
-                if (so is CardSO card)
-                {
-                    //구글 시트 데이터와 ID 또는 이름 기준으로 매칭
-                    CardSheetData match = dataList.Find(x =>
-                        x.ID == card.name || x.cardName == card.cardName);
+                if (so is not BaseSO baseSO) continue;
 
-                    //일치하는 데이터가 있으면 SO값 갱신
-                    if (match != null)
-                    {
-                        card.cardName = match.cardName;
-                        card.damage = match.damage;
-                        updatedCount++;
-                    }
+                CardSheetData match = dataList.Find(x => x.ID == baseSO.ID || x.cardName == baseSO.Name);
+
+                if(match != null)
+                {
+                    baseSO.ApplyData(match);
+                    updatedCount++;
                 }
             }
 
@@ -54,7 +49,5 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 
         Debug.Log($"[GoogleLoader] 전체 라벨 SO 패치 완료 ({totalUpdated}개)");
     }
-
-
 }
 

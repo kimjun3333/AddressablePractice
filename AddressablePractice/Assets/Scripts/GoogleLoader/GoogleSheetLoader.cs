@@ -4,17 +4,6 @@ using System.Threading.Tasks;
 using UnityEngine.Networking;
 
 /// <summary>
-/// 구글시트 한줄의 데이터를 담는 클래스
-/// </summary>
-[System.Serializable]
-public class CardSheetData //테스트용 임시
-{
-    public string ID;
-    public string cardName;
-    public int damage;
-}
-
-/// <summary>
 /// 구글시트 Json을 JsonUtility로 파싱하기 위한 래퍼 클래스
 /// </summary>
 

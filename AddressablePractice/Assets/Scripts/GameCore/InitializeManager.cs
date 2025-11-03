@@ -7,18 +7,19 @@ using UnityEngine;
 /// </summary>
 public class InitializeManager : Singleton<InitializeManager>
 {
-    private async void Awake()
-    {
-        Debug.Log("초기화 시작");
-        await AddressableLoader.Instance.Init();
-        await DataManager.Instance.Init();
+    protected override async void Awake()
+    {   
+        base.Awake();
 
-        foreach(var kvp in AddressableLoader.Instance.loadedData)
+        Debug.Log("초기화 시작");
+        await AddressableLoader.Instance.Init(); //어드레서블 데이터 불러오기
+        await GoogleLoader.Instance.Init(); //어드레서블 데이터 덮어쓰기
+
+        await DataManager.Instance.Init(); //현재 기능없음
+        foreach (var kvp in AddressableLoader.Instance.loadedData) //로드된 어드레서블 데이터를 DataManager에 추가
         {
             DataManager.Instance.AddData(kvp.Key, kvp.Value);
         }
-
-        await GoogleLoader.Instance.Init();
 
         Debug.Log("모든 초기화 완료");
     }
