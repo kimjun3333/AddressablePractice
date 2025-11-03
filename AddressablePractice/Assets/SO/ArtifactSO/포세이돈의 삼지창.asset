@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
-  m_Name: AttackCard_ContentUpdateGroupSchema
+  m_Script: {fileID: 11500000, guid: a639ad674cffbe24c89bd88f391f3049, type: 3}
+  m_Name: "\uD3EC\uC138\uC774\uB3C8\uC758 \uC0BC\uC9C0\uCC3D"
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 4344b3cda47210647a255d13c9b6388d, type: 2}
-  m_StaticContent: 0
+  ID: A_003
+  Name: "\uD3EC\uC138\uC774\uB3C8\uC758 \uC0BC\uC9C0\uCC3D"
+  Description: "\uD3EC\uC138\uC774\uB3C8"
+  Type: Artifact
+  rarity: 2

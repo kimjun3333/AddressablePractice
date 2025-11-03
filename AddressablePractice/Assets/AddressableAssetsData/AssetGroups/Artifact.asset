@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Artifact
+  m_EditorClassIdentifier: 
+  m_GroupName: Artifact
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 5c7fd6459c065db4cb4d4a0a471bc082
+  m_SerializeEntries:
+  - m_GUID: 16f25ab4757fa2a46b378ad9397c0842
+    m_Address: "Assets/SO/ArtifactSO/\uD3EC\uC138\uC774\uB3C8\uC758 \uC0BC\uC9C0\uCC3D.asset"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Artifact
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22ea59877d0b59b46955ffcc55575ec7
+    m_Address: "Assets/SO/ArtifactSO/\uCC9C\uB9AC\uC548.asset"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Artifact
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d6c28c23362ea6489356d19a0449cfe
+    m_Address: "Assets/SO/ArtifactSO/\uC5D1\uC2A4\uCE7C\uB9AC\uBC84.asset"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Artifact
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ba6ed1a4c4e7fb4596eb931c56f1ac6
+    m_Address: "Assets/SO/ArtifactSO/\uC81C\uC6B0\uC2A4\uC758 \uBC88\uAC1C.asset"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Artifact
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bebab0f048e48494b83b2b58ebd32e6f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4443b0de6a652aa4dacb89e3c729f36a, type: 2}
+    - {fileID: 11400000, guid: 57dcee5eadf6d6d4382913220e80753d, type: 2}

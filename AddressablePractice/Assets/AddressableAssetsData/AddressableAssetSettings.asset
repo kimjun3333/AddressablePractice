@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3b925aefe0fc2954ebd783ebed1bebba
   m_currentHash:
     serializedVersion: 2
-    Hash: 3f06814389e89c79d0a95575ac14ec42
+    Hash: 1e7046828d7cc52027c30bc12df1f605
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 612d1b64e478b13438ca4b91d54d8be6, type: 2}
-  - {fileID: 11400000, guid: f8da5c718a494aa4090dbe9591cc5966, type: 2}
+  - {fileID: 11400000, guid: 2922a5b465cfdd64d824975840c89eb7, type: 2}
+  - {fileID: 11400000, guid: f1ed46c5d85dfbc4b9e2bba010f80733, type: 2}
   - {fileID: 11400000, guid: 1e65df92b448ba64fb10e4b057f2889a, type: 2}
-  - {fileID: 11400000, guid: 4344b3cda47210647a255d13c9b6388d, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -89,9 +89,8 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - Attack
-    - Defense
     - Card
+    - Artifact
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 7a0a37a6a8b1abe4fb50d859857505ac, type: 2}
