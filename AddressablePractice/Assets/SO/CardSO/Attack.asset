@@ -17,5 +17,5 @@ MonoBehaviour:
   Description: "\uACF5\uACA9"
   Type: Card
   cardType: 0
-  value: 20
-  cost: 1
+  value: 100
+  cost: 200

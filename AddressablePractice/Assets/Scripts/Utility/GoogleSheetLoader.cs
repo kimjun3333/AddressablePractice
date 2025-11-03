@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
+using System;
 
 /// <summary>
 /// 구글시트 Json을 JsonUtility로 파싱하기 위한 래퍼 클래스
 /// </summary>
 
-[System.Serializable]
-public class CardSheetDataList
+[Serializable]
+public class SheetDataList<T>
 {
-    public List<CardSheetData> list;
+    public List<T> list;
 }
 
 /// <summary>
@@ -18,7 +19,7 @@ public class CardSheetDataList
 /// </summary>
 public static class GoogleSheetLoader
 {
-    public static async Task<List<CardSheetData>> LoadCardData(string url)
+    public static async Task<List<T>> LoadSheetData<T>(string url)
     {
         using UnityWebRequest req = UnityWebRequest.Get(url);
         var op = req.SendWebRequest();
@@ -37,7 +38,7 @@ public static class GoogleSheetLoader
         string rawJson = req.downloadHandler.text;
 
         string wrappedJson = "{\"list\":" + rawJson + "}";
-        CardSheetDataList wrapper = JsonUtility.FromJson<CardSheetDataList>(wrappedJson);
+        SheetDataList<T> wrapper = JsonUtility.FromJson<SheetDataList<T>>(wrappedJson);
 
         Debug.Log($"GoogleSheetLoader : 데이터 로드 완료 {wrapper.list.Count}개");
         return wrapper.list;

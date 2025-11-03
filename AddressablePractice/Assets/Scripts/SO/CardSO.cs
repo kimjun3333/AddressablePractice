@@ -15,7 +15,7 @@ public class CardSheetData : BaseSheetData
 {
     public string CardType; //카드의 타입
     public int Value;
-    public int Cost; 
+    public int Cost;
 }
 
 [CreateAssetMenu(fileName = "CardSO", menuName = "SO/CardSO")]
@@ -34,21 +34,11 @@ public class CardSO : BaseSO
         Description = data.Description;
         value = data.Value;
         cost = data.Cost;
+        value = data.Value;
+        cost = data.Cost;
         Type = "Card"; //임시
 
-        if (value != data.Value)
-        {
-            Debug.Log($"[CardSO] {ID}: value {value} → {data.Value}");
-            value = data.Value;
-        }
-
-        if (cost != data.Cost)
-        {
-            Debug.Log($"[CardSO] {ID}: cost {cost} → {data.Cost}");
-            cost = data.Cost;
-        }
-
-        if (System.Enum.TryParse(data.CardType, true, out CardType parsed))
+        if (Enum.TryParse(data.CardType, true, out CardType parsed))
         {
             cardType = parsed;
         }

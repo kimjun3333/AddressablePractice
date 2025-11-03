@@ -17,5 +17,5 @@ MonoBehaviour:
   Description: "\uBC29\uD328\uB9C9\uAE30"
   Type: Card
   cardType: 1
-  value: 20
-  cost: 5
+  value: 100
+  cost: 200

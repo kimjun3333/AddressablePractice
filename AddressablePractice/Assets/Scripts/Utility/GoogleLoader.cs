@@ -9,45 +9,63 @@ using UnityEngine;
 public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
 {
     string cardURL = URLContainer.cardURL;
+    string artifactURL = URLContainer.artifactURL;
+
     public async Task Init()
     {
         Debug.Log("GoogleLoader 데이터 로드 및 패치 시작.");
 
-        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(cardURL);
-        if (dataList == null || dataList.Count == 0)
-        {
-            Debug.LogError($"GoogleLoader : sheet 데이터를 불러오지 못했습니다.");
-            return;
-        }
-
         int totalUpdated = 0;
 
-        //AddressableLoader에서 로드된 데이터 순회하면서 같은 ID랑 Name의 데이터를 보고 그값을 덮어씀
-        foreach (var kvp in AddressableLoader.Instance.loadedData)
+        var cardData = await GoogleSheetLoader.LoadSheetData<CardSheetData>(cardURL);
+        if(cardData != null && cardData.Count > 0)
+        {
+            int updated = UpdateSOData<CardSO, CardSheetData>(cardData);
+            Debug.Log($"GoogleLoader : 카드 SO {updated}개 갱신 완료");
+            totalUpdated += updated;
+        }
+        else
+        {
+            Debug.LogError("GoogleLoader : 카드 시트 데이터를 불러오지 못했습니다.");
+        }
+
+        var artifactData = await GoogleSheetLoader.LoadSheetData<ArtifactSheetData>(artifactURL);
+        if(artifactData != null && artifactData.Count > 0)
+        {
+            int updated = UpdateSOData<ArtifactSO, ArtifactSheetData>(artifactData);
+            Debug.Log($"GoogleLoader : 유물 SO {updated}개 갱신 완료");
+            totalUpdated += updated;
+        }
+        else
+        {
+            Debug.LogError("GoogleLoader : 유물 시트 데이터를 불러오지 못했습니다.");
+        }
+
+        Debug.Log($"GoogleLoader : 전체 SO 패치 완료 총 {totalUpdated}개 갱신됨");
+    }
+
+    private int UpdateSOData<TSO, TData>(List<TData> dataList) where TSO : BaseSO where TData : BaseSheetData
+    {
+        int updatedCount = 0;
+
+        foreach(var kvp in AddressableLoader.Instance.loadedData)
         {
             string label = kvp.Key;
             IList<ScriptableObject> soList = kvp.Value;
-            int updatedCount = 0;
 
-            //해당 라벨 SO 확인
-            foreach (var so in soList)
+            foreach(var so in soList)
             {
                 if (so is not BaseSO baseSO) continue;
 
-                CardSheetData match = dataList.Find(x => x.ID == baseSO.ID || x.Name == baseSO.Name);
+                TData match = dataList.Find(x => x.ID == baseSO.ID || x.Name == baseSO.Name);
+                if (match == null) continue;
 
-                if(match != null)
-                {
-                    baseSO.ApplyData(match);
-                    updatedCount++;
-                }
+                baseSO.ApplyData(match);
+                updatedCount++;
             }
-
-            Debug.Log($"[GoogleLoader] [{label}] SO {updatedCount}개 갱신 완료");
-            totalUpdated += updatedCount;
         }
 
-        Debug.Log($"[GoogleLoader] 전체 라벨 SO 패치 완료 ({totalUpdated}개)");
+        return updatedCount;
     }
 }
 

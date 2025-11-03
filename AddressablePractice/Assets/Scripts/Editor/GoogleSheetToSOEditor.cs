@@ -11,6 +11,7 @@ using UnityEngine;
 public class GoogleSheetToSOEditor : EditorWindow
 {
     string cardURL = URLContainer.cardURL;
+    string artifactURL = URLContainer.artifactURL;
 
     /// <summary>
     /// Unity메뉴바에 표시되는 메뉴 항목 등록
@@ -27,12 +28,22 @@ public class GoogleSheetToSOEditor : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("Google Sheet URL", EditorStyles.boldLabel);
-        cardURL = EditorGUILayout.TextField("Sheet URL", cardURL);
+
+        cardURL = EditorGUILayout.TextField("Card Sheet URL", cardURL);
+        artifactURL = EditorGUILayout.TextField("Artifact Sheet URL", artifactURL);
+
+        GUILayout.Space(10);
+
 
         //버튼 클릭시 ImportFromSheet() 비동기 실행
-        if(GUILayout.Button("불러와서 SO생성 / 갱신"))
+        if(GUILayout.Button("카드 SO생성 / 갱신"))
         {
             _ = ImportCardData();
+        }
+
+        if(GUILayout.Button("유물 SO생성 / 갱신"))
+        {
+            _ = ImportArtifactData();
         }
     }
 
@@ -42,7 +53,7 @@ public class GoogleSheetToSOEditor : EditorWindow
     /// <returns></returns>
     private async Task ImportCardData()
     {
-        List<CardSheetData> dataList = await GoogleSheetLoader.LoadCardData(cardURL);
+        List<CardSheetData> dataList = await GoogleSheetLoader.LoadSheetData<CardSheetData>(cardURL);
 
         if(dataList == null)
         {
@@ -51,6 +62,19 @@ public class GoogleSheetToSOEditor : EditorWindow
         }
 
         SOGenerator.CreateOrUpdateSOs<CardSO, CardSheetData>(dataList);
+    }
+
+    private async Task ImportArtifactData()
+    {
+        List<ArtifactSheetData> dataList = await GoogleSheetLoader.LoadSheetData<ArtifactSheetData>(artifactURL);
+
+        if (dataList == null)
+        {
+            Debug.LogError("GoogleSheetToSOEditor : 데이터 불러오기 실패");
+            return;
+        }
+
+        SOGenerator.CreateOrUpdateSOs<ArtifactSO, ArtifactSheetData>(dataList);
     }
 }
 #endif
