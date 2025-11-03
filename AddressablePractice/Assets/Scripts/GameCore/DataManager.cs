@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager : Singleton<DataManager>, IInitializable
 {
-    public static DataManager Instance { get; private set; }
-
     [SerializeReference] private Dictionary<string, List<ScriptableObject>> dataByLabel = new();
-    private void Awake()
-    {
-        if(Instance != null && Instance != this)
-        {
-            Destroy(Instance);
-            return;
-        }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    public async Task Init()
+    {
+        Debug.Log("DataManager 준비 완료");
+        await Task.CompletedTask;
     }
     
     public void AddData<T>(string label, IEnumerable<T> assets) where T : ScriptableObject
@@ -34,7 +27,7 @@ public class DataManager : MonoBehaviour
                 }
             }
 
-            Debug.Log($"DataManger : {label} 데이터 추가 ");
+            Debug.Log($"DataManger : {label} {dataByLabel[label].Count}개 데이터 추가 ");
         }
     }
 

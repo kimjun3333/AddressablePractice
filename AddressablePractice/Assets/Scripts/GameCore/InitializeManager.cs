@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class InitializeManager : Singleton<InitializeManager>
+{
+    private async void Awake()
+    {
+        Debug.Log("초기화 시작");
+        await AddressableLoader.Instance.Init();
+        await DataManager.Instance.Init();
+
+        foreach(var kvp in AddressableLoader.Instance.loadedData)
+        {
+            DataManager.Instance.AddData(kvp.Key, kvp.Value);
+        }
+
+        Debug.Log("모든 초기화 완료");
+    }
+}
