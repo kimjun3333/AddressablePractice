@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a639ad674cffbe24c89bd88f391f3049, type: 3}
-  m_Name: "\uD3EC\uC138\uC774\uB3C8\uC758 \uC0BC\uC9C0\uCC3D"
+  m_Script: {fileID: 11500000, guid: d1c121930e7c50241b80e568e08322a0, type: 3}
+  m_Name: "C_003_\uBCC0\uACBD"
   m_EditorClassIdentifier: 
-  ID: A_003
-  Name: "\uD3EC\uC138\uC774\uB3C8\uC758 \uC0BC\uC9C0\uCC3D"
-  Description: "\uBB34\uC57C\uD638"
-  Type: Artifact
-  rarity: 2
+  ID: C_003
+  Name: "\uBCC0\uACBD"
+  Description: "\uB354\uC318\uACF5\uACA9"
+  Type: Card
+  cardType: 0
+  value: 50
+  cost: 50

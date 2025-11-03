@@ -80,15 +80,17 @@ public class GoogleSheetToSOEditor : EditorWindow
             return;
         }
 
-        var generatorMethod = typeof(SOGenerator).GetMethod("CreateOrUpdateSOs", BindingFlags.Public | BindingFlags.Static)?.MakeGenericMethod(soType, dataType);
+        SOGenerator.ClearFieldCache();
 
-        if (generatorMethod == null)
-        {
-            Debug.LogError($"[ERROR] {soType.Name} : SOGenerator 메서드 찾기 실패 ❌");
-            return;
-        }
+        var createMethod = typeof(SOGenerator)
+            .GetMethod("CreateOrUpdateSOs", BindingFlags.Public | BindingFlags.Static)?
+            .MakeGenericMethod(soType, dataType);
+        createMethod?.Invoke(null, new object[] { dataList });
 
-        generatorMethod?.Invoke(null, new object[] { dataList });
+        var cleanupMethod = typeof(SOGenerator)
+            .GetMethod("CleanUpOrphanedSOs", BindingFlags.Public | BindingFlags.Static)?
+            .MakeGenericMethod(soType, dataType);
+        cleanupMethod?.Invoke(null, new object[] { dataList });
 
         Debug.Log($"GoogleSheetToSOEditor : {soType.Name} SO {dataList.Count}개 생성/갱신 완료");
     }

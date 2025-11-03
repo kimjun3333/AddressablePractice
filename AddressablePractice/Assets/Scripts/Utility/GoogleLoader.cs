@@ -71,7 +71,7 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
                     string dataID = idField?.GetValue(data) as string;
                     string dataName = nameField?.GetValue(data) as string;
 
-                    if(dataID == baseSO.ID || dataName == baseSO.Name)
+                    if(dataID == baseSO.ID && dataName == baseSO.Name)
                     {
                         baseSO.ApplyData(data);
                         updatedCount++;

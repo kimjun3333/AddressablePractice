@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c121930e7c50241b80e568e08322a0, type: 3}
-  m_Name: Wall
+  m_Script: {fileID: 11500000, guid: a639ad674cffbe24c89bd88f391f3049, type: 3}
+  m_Name: "A_005_\uBC18\uAC11\uC2B5\uB2C8\uB2E4"
   m_EditorClassIdentifier: 
-  ID: C_006
-  Name: Wall
-  Description: "\uADF8\uB0E5\uB9C9\uAE30"
-  Type: Card
-  cardType: 1
-  value: 50
-  cost: 50
+  ID: A_005
+  Name: "\uBC18\uAC11\uC2B5\uB2C8\uB2E4"
+  Description: "\uBB34\uC57C\uD638"
+  Type: Artifact
+  rarity: 2
