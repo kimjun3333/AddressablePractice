@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 
 public enum CardType
 {
@@ -6,18 +7,14 @@ public enum CardType
     Defense,
     Utility
 }
-
 /// <summary>
 /// 구글시트 한줄의 데이터를 담는 클래스
 /// </summary>
-[System.Serializable]
-public class CardSheetData //Data도 기본데이터 들어있는거 만들기
+[Serializable]
+public class CardSheetData : BaseSheetData
 {
-    public string ID; 
-    public string Name;
     public string CardType; //카드의 타입
     public int Value;
-    public string Description;
     public int Cost; 
 }
 
