@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -7,7 +7,8 @@ using UnityEngine;
 /// </summary>
 public class DataManager : Singleton<DataManager>, IInitializable
 {
-    [SerializeReference] private Dictionary<string, List<ScriptableObject>> dataByLabel = new();
+    //[SerializeReference] private Dictionary<string, List<ScriptableObject>> dataByLabel = new();
+    [SerializeReference] private Dictionary<string, List<Object>> dataByLabel = new();
 
     public async Task Init()
     {
@@ -21,11 +22,10 @@ public class DataManager : Singleton<DataManager>, IInitializable
     /// <typeparam name="T"></typeparam>
     /// <param name="label"></param>
     /// <param name="assets"></param>
-    public void AddData<T>(string label, IEnumerable<T> assets) where T : ScriptableObject
+    public void AddData(string label, IEnumerable<Object> assets)
     {
-        if(!dataByLabel.ContainsKey(label))
-        {
-            dataByLabel[label] = new List<ScriptableObject>();
+        if (!dataByLabel.ContainsKey(label))
+            dataByLabel[label] = new List<Object>();
 
             foreach(var asset in assets)
             {
@@ -35,8 +35,7 @@ public class DataManager : Singleton<DataManager>, IInitializable
                 }
             }
 
-            Debug.Log($"DataManger : {label} {dataByLabel[label].Count}개 데이터 추가 ");
-        }
+        Debug.Log($"DataManager : [{label}] {dataByLabel[label].Count}개 데이터 추가 완료");
     }
 
     /// <summary>
@@ -46,13 +45,32 @@ public class DataManager : Singleton<DataManager>, IInitializable
     /// <param name="label"></param>
     /// <returns></returns>
 
-    public List<T> GetDataByLabel<T>(string label) where T : ScriptableObject
+    public List<T> GetDataByLabel<T>(string label) where T : Object
     {
         if(!dataByLabel.TryGetValue(label, out var list))
-        {
             return new List<T>();
+
+        List<T> result = new();
+        foreach(var item in list)
+        {
+            if (item is T tItem)
+                result.Add(tItem);
+        }
+        return result;
+    }
+
+    public List<T> GetAllDataOfType<T>() where T : Object
+    {
+        List<T> result = new();
+        foreach(var kvp in dataByLabel)
+        {
+            foreach(var item in kvp.Value)
+            {
+                if(item is T  tItem)
+                    result.Add(tItem);
+            }
         }
 
-        return list.ConvertAll(x => x as T);
+        return result;
     }
 }

@@ -13,65 +13,66 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AddressableLoader : Singleton<AddressableLoader>, IInitializable
 {
-    public Dictionary<string, IList<ScriptableObject>> loadedData = new(); //라벨별로 로드된 SO 저장하는 딕셔너리
+    public Dictionary<string, IList<UnityEngine.Object>> loadedData = new(); //SO뿐만아니라 Sprite, Audio, prefab등 다 가능하게.
+
+    private readonly Dictionary<string, Type[]> labelTypeMap = new()
+    {
+        { "Card", new[] { typeof(ScriptableObject) } },
+        { "Sprites", new[] { typeof(Sprite) } },
+        { "Artifact", new[] { typeof(ScriptableObject)} },
+    };
 
     public async Task Init()
     {
-        await Addressables.InitializeAsync().Task; //Addressable 시스템 초기화
+        await Addressables.InitializeAsync().Task; //Addressable 초기화
 
-        HashSet<string> allKeys = new(); //모든 키 수집
-        foreach(var locator in Addressables.ResourceLocators)
+        Debug.Log("AddressableLoader : Addressables 초기화 완료");
+
+        foreach(var kvp in labelTypeMap)
         {
-            foreach(var key in locator.Keys)
+            string label = kvp.Key;
+            Type[] types = kvp.Value;
+
+            foreach(var type in types)
             {
-                if(key is string sKey)
-                {
-                    allKeys.Add(sKey);
-                }
+                var method = GetType().GetMethod(nameof(TryLoadLabel),
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                var generic = method.MakeGenericMethod(type);
+                await (Task)generic.Invoke(this, new object[] { label });
             }
         }
 
-        List<string> labelCandidates = new(); //키중에서 라벨로 추정되는 후보만 필터링
-        foreach(var key in allKeys)
+        Debug.Log($"AddressableLoader : 라벨별 로드 완료 ({loadedData.Count}개 라벨)");
+    }
+
+    private async Task TryLoadLabel<T>(string label) where T : UnityEngine.Object
+    {
+        AsyncOperationHandle<IList<T>> handle = default;
+        try
         {
-            if (key.Contains("/") || key.Contains(".") || key.StartsWith("guid_", StringComparison.OrdinalIgnoreCase))
-                continue;
+            handle = Addressables.LoadAssetsAsync<T>(label, null);
+            var assets = await handle.Task;
 
-            if (key.Any(char.IsDigit))
-                continue;
-
-            labelCandidates.Add(key);
-        }
-
-        Debug.Log($"AddressableLoader : 탐색된 라벨 {labelCandidates.Count}개");
-
-        //필터링된 각 라벨을 대상으로 실제 SO 로드 시도
-        foreach(var label in labelCandidates)
-        {
-            AsyncOperationHandle<IList<ScriptableObject>> handle = default;
-            try
+            if (assets != null && assets.Count > 0)
             {
-                //라벨에 속한 SO 비동기로 로드
-                handle = Addressables.LoadAssetsAsync<ScriptableObject>(label, null);
-                var assets = await handle.Task;
+                if (!loadedData.ContainsKey(label))
+                    loadedData[label] = new List<UnityEngine.Object>();
 
-                //SO가 존재하면 로드
-                if(assets != null && assets.Count > 0)
-                {
-                    loadedData[label] = assets;
-                    Debug.Log($"AddressableLoader : 라벨 {label} -> {assets.Count}개 로드됨");
-                }
-            }
-            finally
-            {
-                //핸들이 유효하면 Release로 해제 (메모리 누수 방지)
-                if(handle.IsValid())
-                {
-                    Addressables.Release(handle);
-                }
+                foreach (var asset in assets)
+                    loadedData[label].Add(asset);
+
+                Debug.Log($"AddressableLoader : [{typeof(T).Name}] 라벨 {label} → {assets.Count}개 로드됨");
             }
         }
-
-        Debug.Log($"AddressableLoader : Addressable SO 로드 완료 ({loadedData.Count}개 라벨)");
+        catch (Exception ex)
+        {
+            Debug.LogWarning($"AddressableLoader : [{typeof(T).Name}] 라벨 {label} 로드 실패 - {ex.Message}");
+        }
+        finally
+        {
+            if (handle.IsValid())
+                Addressables.Release(handle);
+        }
     }
 }

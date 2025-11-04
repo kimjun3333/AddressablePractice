@@ -13,16 +13,19 @@ public class DataManagerEditor : Editor
         var field = typeof(DataManager)
             .GetField("dataByLabel", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-        var dict = field.GetValue(dm) as Dictionary<string, List<ScriptableObject>>;
+        var dict = field.GetValue(dm) as Dictionary<string, List<UnityEngine.Object>>;
         if (dict == null) return;
 
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("dataByLabel (∑±≈∏¿” ªÛ≈¬)", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("dataByLabel (Îü∞ÌÉÄÏûÑ ÏÉÅÌÉú)", EditorStyles.boldLabel);
         foreach(var kv  in dict)
         {
-            EditorGUILayout.LabelField($"{kv.Key}: {kv.Value.Count}∞≥");
+            EditorGUILayout.LabelField($"{kv.Key}: {kv.Value.Count}Í∞ú");
+            EditorGUI.indentLevel++;
             foreach (var so in kv.Value)
-                EditorGUILayout.ObjectField(so, typeof(ScriptableObject), false);
+                EditorGUILayout.ObjectField(so, typeof(UnityEngine.Object), false);
+
+            EditorGUI.indentLevel--;
         }
     }
 }

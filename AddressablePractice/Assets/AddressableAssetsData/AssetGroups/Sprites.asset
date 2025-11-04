@@ -1,0 +1,175 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Sprites
+  m_EditorClassIdentifier: 
+  m_GroupName: Sprites
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2c1bee215ffc0ef4aa74cccd9b01d430
+  m_SerializeEntries:
+  - m_GUID: 022ad445c07608642a2be6301d005977
+    m_Address: ring_019
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c1f95497069c2d4f8eb20c6553cbc01
+    m_Address: ring_002
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10277d57462221d48823507194749417
+    m_Address: ring_022
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19a4b38401504674eb541bb4c6915ced
+    m_Address: ring_012
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b701622b24ef9749b63e5e564b87d0a
+    m_Address: ring_023
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2bf6545eb4afa8f44ad8a806ab6ec1f7
+    m_Address: ring_017
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3109af30c55a06d469e2206d30d0dd84
+    m_Address: ring_006
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 315cb710699c27c4297976f7b5782b98
+    m_Address: ring_008
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3621c0205771b634bb94c51069734246
+    m_Address: ring_009
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 68f6070cccedf0645a1c69d2405df3c5
+    m_Address: ring_005
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e27cfa55548c934ca8b442f999b7eb9
+    m_Address: ring_025
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 717dc68f5d3f0124b81cf8c1317c9969
+    m_Address: ring_018
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 727d7657ba23bc542a76cb78dbff490c
+    m_Address: ring_024
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dafc578128312c4e9bcc7437f753876
+    m_Address: ring_020
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e03974e16ec13e4ab82d88a74891d0a
+    m_Address: ring_011
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a87d25c5ff2c3d24a93994e954f5bf9c
+    m_Address: ring_016
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b371b9dfe13ee4b4d930a7ce38614b45
+    m_Address: ring_021
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc39d439ee5dc2c44a2c0b4bd881b65c
+    m_Address: ring_001
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3547d86c89eff541b0bdda6826b5f08
+    m_Address: ring_007
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9c2ebc998439e943a83d2197eb16e1e
+    m_Address: ring_010
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: daeb8dea7f8fcca4597fd2950571bf69
+    m_Address: ring_003
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e077eeb85edbf744996fbe855456f51f
+    m_Address: ring_013
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e283bb4693b3cc44083204d836315d77
+    m_Address: ring_015
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9b6e34148732404ab5864aea4e7f24d
+    m_Address: ring_004
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f975f01657719a04eb56c8e3dda5e786
+    m_Address: ring_014
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sprites
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: bebab0f048e48494b83b2b58ebd32e6f, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 57d830ea35625da478001094d73aed57, type: 2}
+    - {fileID: 11400000, guid: 3d41661afaf05844999b8cb26bd199e5, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3b925aefe0fc2954ebd783ebed1bebba
   m_currentHash:
     serializedVersion: 2
-    Hash: 1e7046828d7cc52027c30bc12df1f605
+    Hash: b01ce5bc02a1163fe5e1aee0ced31b68
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: a3e3e169fb20f2744958c5fd771a065b, type: 2}
   - {fileID: 11400000, guid: 612d1b64e478b13438ca4b91d54d8be6, type: 2}
   - {fileID: 11400000, guid: 2922a5b465cfdd64d824975840c89eb7, type: 2}
   - {fileID: 11400000, guid: f1ed46c5d85dfbc4b9e2bba010f80733, type: 2}
@@ -89,6 +90,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Sprites
     - Card
     - Artifact
   m_SchemaTemplates: []
