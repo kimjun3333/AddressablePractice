@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +13,8 @@ public class InitializeManager : Singleton<InitializeManager>
 
         Debug.Log("초기화 시작");
         await AddressableLoader.Instance.Init(); //어드레서블 데이터 불러오기
-        await GoogleLoader.Instance.Init(); //어드레서블 데이터 덮어쓰기
-
+        await GoogleLoader.Instance.Init(); //어드레서블 데이터 덮어쓰기 
+        AddressableLoader.Instance.LinkAllSprites(); //데이터 덮어쓴 이후에 스프라이트 ID 비교후 연결해주기
         await DataManager.Instance.Init(); //현재 기능없음
         foreach (var kvp in AddressableLoader.Instance.loadedData) //로드된 어드레서블 데이터를 DataManager에 추가
         {

@@ -23,11 +23,8 @@ public class ArtifactSO : BaseSO
     {
         if (sheetData is not ArtifactSheetData data) return;
 
-        ID = data.ID;
-        Name = data.Name;
-        Description = data.Description;
-        SpriteID = data.SpriteID;
-        Sprite = null;
+        ApplyBaseData(data);
+
         Type = "Artifact";
 
         if (Enum.TryParse(data.Rarity, true, out RarityType parsed))

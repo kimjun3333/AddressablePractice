@@ -29,17 +29,12 @@ public class CardSO : BaseSO
     {
         if (sheetData is not CardSheetData data) return;
 
-        ID = data.ID;
-        Name = data.Name;
-        Description = data.Description;
+        ApplyBaseData(data);
+        
         value = data.Value;
         cost = data.Cost;
         value = data.Value;
         cost = data.Cost;
-
-        SpriteID = data.SpriteID;
-        Sprite = null;
-
         Type = "Card"; //임시
 
         if (Enum.TryParse(data.CardType, true, out CardType parsed))
