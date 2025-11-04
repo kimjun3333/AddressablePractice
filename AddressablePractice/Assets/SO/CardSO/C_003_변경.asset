@@ -16,6 +16,8 @@ MonoBehaviour:
   Name: "\uBCC0\uACBD"
   Description: "\uB354\uC318\uACF5\uACA9"
   Type: Card
+  SpriteID: Test
+  Sprite: {fileID: 0}
   cardType: 0
   value: 50
   cost: 50

@@ -36,6 +36,10 @@ public class CardSO : BaseSO
         cost = data.Cost;
         value = data.Value;
         cost = data.Cost;
+
+        SpriteID = data.SpriteID;
+        Sprite = null;
+
         Type = "Card"; //임시
 
         if (Enum.TryParse(data.CardType, true, out CardType parsed))

@@ -16,4 +16,6 @@ MonoBehaviour:
   Name: "\uC694"
   Description: "\uBB34\uC57C\uD638"
   Type: Artifact
+  SpriteID: "\uC559"
+  Sprite: {fileID: 0}
   rarity: 2

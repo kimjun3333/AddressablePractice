@@ -26,6 +26,8 @@ public class ArtifactSO : BaseSO
         ID = data.ID;
         Name = data.Name;
         Description = data.Description;
+        SpriteID = data.SpriteID;
+        Sprite = null;
         Type = "Artifact";
 
         if (Enum.TryParse(data.Rarity, true, out RarityType parsed))

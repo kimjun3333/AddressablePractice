@@ -9,4 +9,6 @@ public class BaseSheetData
     public string ID;
     public string Name;
     public string Description;
+
+    public string SpriteID;
 }
