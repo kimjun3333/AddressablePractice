@@ -14,7 +14,7 @@ public class UIManager : Singleton<UIManager>, IInitializable //해상도 대응
 
     private Transform uiRoot; //모든 Canvas를 담은 최상위 UI루트
 
-    public async Task Init()
+    public async Task Init() //EventSystem 생성안되면 넣는 로직 넣기
     {
         Debug.Log("UIManager 초기화 시작");
 

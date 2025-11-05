@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 3b925aefe0fc2954ebd783ebed1bebba
   m_currentHash:
     serializedVersion: 2
-    Hash: b01ce5bc02a1163fe5e1aee0ced31b68
+    Hash: 797b20d5289aa6cc32dd4a8a97fd9af5
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2922a5b465cfdd64d824975840c89eb7, type: 2}
   - {fileID: 11400000, guid: f1ed46c5d85dfbc4b9e2bba010f80733, type: 2}
   - {fileID: 11400000, guid: 1e65df92b448ba64fb10e4b057f2889a, type: 2}
+  - {fileID: 11400000, guid: 0d2511ef40d4c2e47b838d314a895e94, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - UI
     - Sprites
     - Card
     - Artifact
