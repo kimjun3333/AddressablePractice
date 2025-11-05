@@ -20,6 +20,7 @@ public class AddressableLoader : Singleton<AddressableLoader>, IInitializable
         { "Card", new[] { typeof(ScriptableObject) } },
         { "Sprites", new[] { typeof(Sprite) } },
         { "Artifact", new[] { typeof(ScriptableObject)} },
+        { "UI", new[] { typeof(GameObject) } },
     };
 
     public async Task Init()
@@ -49,8 +50,16 @@ public class AddressableLoader : Singleton<AddressableLoader>, IInitializable
     private async Task TryLoadLabel<T>(string label) where T : UnityEngine.Object
     {
         AsyncOperationHandle<IList<T>> handle = default;
+
         try
         {
+            var locations = await Addressables.LoadResourceLocationsAsync(label, typeof(T)).Task;
+            if(locations == null || locations.Count == 0)
+            {
+                Debug.LogWarning($"AddressableLoader : 라벨{label}에 해당하는 {typeof(T).Name} 에셋이 존재하지 않음");
+                return;
+            }
+
             handle = Addressables.LoadAssetsAsync<T>(label, null);
             var assets = await handle.Task;
 

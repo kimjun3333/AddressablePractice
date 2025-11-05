@@ -15,11 +15,8 @@ public class InitializeManager : Singleton<InitializeManager>
         await AddressableLoader.Instance.Init(); //어드레서블 데이터 불러오기
         await GoogleLoader.Instance.Init(); //어드레서블 데이터 덮어쓰기 
         AddressableLoader.Instance.LinkAllSprites(); //데이터 덮어쓴 이후에 스프라이트 ID 비교후 연결해주기
-        await DataManager.Instance.Init(); //현재 기능없음
-        foreach (var kvp in AddressableLoader.Instance.loadedData) //로드된 어드레서블 데이터를 DataManager에 추가
-        {
-            DataManager.Instance.AddData(kvp.Key, kvp.Value);
-        }
+        await DataManager.Instance.Init(); //Addressable에서 DataManager로 데이터 옮기는과정을 DataManager Init으로 옮김  
+        await UIManager.Instance.Init();
 
         Debug.Log("모든 초기화 완료");
     }
