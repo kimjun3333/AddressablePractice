@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7163308241386403997}
   - component: {fileID: 7520866858942558870}
   - component: {fileID: 3491258606710343095}
-  - component: {fileID: 4635783071484322466}
+  - component: {fileID: 5356561848915558771}
   m_Layer: 5
   m_Name: ItemPanel
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4635783071484322466
+--- !u!114 &5356561848915558771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 500, y: 300}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 200, y: 320}
+  m_Spacing: {x: 15, y: 30}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &4231303556235765314
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerType: 1
   contextParent: {fileID: 7163308241386403997}
-  cardSlotPrefab: {fileID: 8317728267558444307, guid: 380de06bf5daa114e85459c8ce88fa3f, type: 3}
+  cardPrefab: {fileID: 4927962897322662531, guid: dc3bc478f7bacc9439d48a3f44b8ba27, type: 3}
   cardList:
   - {fileID: 11400000, guid: ded5ff4bdbeeb5a40bf9ad1235a41f69, type: 2}
   - {fileID: 11400000, guid: 92e43ecf7cbb9f44eb2e1b324daec5e3, type: 2}
