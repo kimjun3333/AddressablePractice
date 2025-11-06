@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class ArtifactSheetData : BaseSheetData
 {
-    public RarityType Rarity;
+    public string Rarity;
 }
 public class ArtifactSO : BaseSO
 {
@@ -18,7 +16,11 @@ public class ArtifactSO : BaseSO
 
         ApplyBaseData(data);
 
-        rarity = data.Rarity;
         Type = "Artifact";
+
+        if (Enum.TryParse(data.Rarity, true, out RarityType parsedRarity))
+            rarity = parsedRarity;
+        else
+            Debug.LogError($"{data.Rarity}은 RarityType 형식에 맞지않습니다.");
     }
 }

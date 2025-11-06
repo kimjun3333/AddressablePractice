@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a639ad674cffbe24c89bd88f391f3049, type: 3}
-  m_Name: "A_003_\uC694"
+  m_Name: "A_005_\uBC18\uC9C05"
   m_EditorClassIdentifier: 
-  ID: A_003
-  Name: "\uC694"
+  ID: A_005
+  Name: "\uBC18\uC9C05"
   Description: "\uBB34\uC57C\uD638"
   Type: Artifact
-  SpriteID: "\uC559"
+  SpriteID: ring_005
   Sprite: {fileID: 0}
   rarity: 2

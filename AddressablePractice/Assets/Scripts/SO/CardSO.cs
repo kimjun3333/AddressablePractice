@@ -13,8 +13,8 @@ public enum CardType
 [Serializable]
 public class CardSheetData : BaseSheetData
 {
-    public CardType CardType; //카드의 타입
-    public RarityType Rarity; //카드 등급
+    public string CardType; //카드의 타입
+    public string Rarity; //카드 등급
     public int Value;
     public int Cost;
 }
@@ -35,8 +35,18 @@ public class CardSO : BaseSO
         
         value = data.Value;
         cost = data.Cost;
-        cardType = data.CardType;
-        rarity = data.Rarity;
         Type = "Card"; //임시
+
+
+        if (Enum.TryParse(data.CardType, true, out CardType parsedCardType))
+            cardType = parsedCardType;
+        else
+            Debug.LogError($"{data.CardType}은 CardType의 형식에 맞지않습니다.");
+
+        if (Enum.TryParse(data.Rarity, true, out RarityType parsedRarity))
+            rarity = parsedRarity;
+        else
+            Debug.LogError($"{data.Rarity}은 RarityType 형식에 맞지않습니다.");
+
     }
 }

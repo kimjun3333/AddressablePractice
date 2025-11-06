@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a639ad674cffbe24c89bd88f391f3049, type: 3}
-  m_Name: "A_001_\uC548\uB155"
+  m_Script: {fileID: 11500000, guid: d1c121930e7c50241b80e568e08322a0, type: 3}
+  m_Name: "C_002_\uC774\uC81C"
   m_EditorClassIdentifier: 
-  ID: A_001
-  Name: "\uC548\uB155"
-  Description: "\uBB34\uC57C\uD638"
-  Type: Artifact
-  SpriteID: "\uC559"
+  ID: C_002
+  Name: "\uC774\uC81C"
+  Description: "\uC318\uACF5\uACA9"
+  Type: Card
+  SpriteID: ring_002
   Sprite: {fileID: 0}
-  rarity: 0
+  cardType: 0
+  rarity: 1
+  value: 12
+  cost: 2

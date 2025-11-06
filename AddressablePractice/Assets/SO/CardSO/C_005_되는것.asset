@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1c121930e7c50241b80e568e08322a0, type: 3}
-  m_Name: "C_006_\uBCC0\uACBD"
+  m_Name: "C_005_\uB418\uB294\uAC83"
   m_EditorClassIdentifier: 
-  ID: C_006
-  Name: "\uBCC0\uACBD"
-  Description: "\uADF8\uB0E5\uB9C9\uAE30"
+  ID: C_005
+  Name: "\uB418\uB294\uAC83"
+  Description: "\uBC29\uD328\uB9C9\uAE30"
   Type: Card
-  SpriteID: Test
+  SpriteID: ring_005
   Sprite: {fileID: 0}
   cardType: 1
-  value: 50
-  cost: 50
+  rarity: 2
+  value: 12
+  cost: 2

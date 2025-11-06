@@ -66,12 +66,12 @@ public class GoogleLoader : Singleton<GoogleLoader>, IInitializable
                 foreach(var data in dataList)
                 {
                     var idField = dataType.GetField("ID");
-                    var nameField = dataType.GetField("Name");
+                    //var nameField = dataType.GetField("Name");
 
                     string dataID = idField?.GetValue(data) as string;
-                    string dataName = nameField?.GetValue(data) as string;
+                    //string dataName = nameField?.GetValue(data) as string;
 
-                    if(dataID == baseSO.ID && dataName == baseSO.Name)
+                    if(dataID == baseSO.ID)
                     {
                         baseSO.ApplyData(data);
                         updatedCount++;
