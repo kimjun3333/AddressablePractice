@@ -3,17 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RarityType
-{
-    Common,
-    UnCommon,
-    Rare
-}
-
 [Serializable]
 public class ArtifactSheetData : BaseSheetData
 {
-    public string Rarity;
+    public RarityType Rarity;
 }
 public class ArtifactSO : BaseSO
 {
@@ -25,15 +18,7 @@ public class ArtifactSO : BaseSO
 
         ApplyBaseData(data);
 
+        rarity = data.Rarity;
         Type = "Artifact";
-
-        if (Enum.TryParse(data.Rarity, true, out RarityType parsed))
-        {
-            rarity = parsed;
-        }
-        else
-        {
-            Debug.LogError($"ArtifactSO : {ID} : 잘못된 RarityType값 {data.Rarity}");
-        }
     }
 }
