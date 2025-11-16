@@ -20,5 +20,6 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   cardType: 0
   rarity: 1
-  value: 12
+  damage: 12
+  shield: 12
   cost: 2

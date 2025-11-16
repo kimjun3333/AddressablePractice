@@ -11,6 +11,7 @@ public enum CardState
 [Serializable]
 public class CardInstance //실제 플레이어가 가진 카드 인스턴스
 {
+    public string CardName;
     public string InstanceID; //개별 카드 구분용(덱에서 중복 카드 구분)
     public CardSO Template; //원본 SO
 
@@ -24,6 +25,7 @@ public class CardInstance //실제 플레이어가 가진 카드 인스턴스
 
     public CardInstance(CardSO so)
     {
+        CardName = so.Name;
         InstanceID = Guid.NewGuid().ToString(); //고유 인스턴스 ID
         Template = so;
 

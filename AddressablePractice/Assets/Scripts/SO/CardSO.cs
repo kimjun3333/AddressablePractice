@@ -18,6 +18,8 @@ public class CardSheetData : BaseSheetData
     public int Damage;
     public int Shield;
     public int Cost;
+
+    public bool IsExhaust;
 }
 
 [CreateAssetMenu(fileName = "CardSO", menuName = "SO/CardSO")]
@@ -28,6 +30,8 @@ public class CardSO : BaseSO
     public int damage;
     public int shield;
     public int cost;
+
+    public bool isExhaust; //일회성 카드
 
     public override void ApplyData(object sheetData)
     {
@@ -40,6 +44,7 @@ public class CardSO : BaseSO
         cost = data.Cost;
         Type = "Card"; //임시
 
+        isExhaust = data.IsExhaust;
 
         if (Enum.TryParse(data.CardType, true, out CardType parsedCardType))
             cardType = parsedCardType;

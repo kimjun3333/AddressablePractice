@@ -18,6 +18,9 @@ public class InitializeManager : Singleton<InitializeManager>
         await DataManager.Instance.Init(); //Addressable에서 DataManager로 데이터 옮기는과정을 DataManager Init으로 옮김  
         await UIManager.Instance.Init();
 
+        //테스트
+        await DeckManager.Instance.Init();
+
         Debug.Log("모든 초기화 완료");
     }
 }
