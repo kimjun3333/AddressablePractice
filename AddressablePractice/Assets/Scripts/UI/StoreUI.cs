@@ -17,16 +17,16 @@ public class StoreUI : UIBase
             //slot.Setup(so);
             //slot.OnBuyRequested = HandleBuyCard;
 
-            var data = new CardData(so);
+            var data = new CardInstance(so);
 
             var cardUI = Instantiate(cardPrefab, contextParent);
             cardUI.SetUp(data, OnBuyCard);
         }
     }
 
-    private void OnBuyCard(CardData card)
+    private void OnBuyCard(CardInstance card)
     {
-        Debug.Log($"{card.BaseSO.Name} 구매!");
+        Debug.Log($"{card.Template.Name} 구매!");
         // 구매 로직 나중에 추가 예정
     }
 

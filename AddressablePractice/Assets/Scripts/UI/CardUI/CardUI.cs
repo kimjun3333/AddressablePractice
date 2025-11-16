@@ -14,15 +14,15 @@ public class CardUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private Button cardButton;
 
-    private CardData cardData;
-    private Action<CardData> onClickAction;
+    private CardInstance cardData;
+    private Action<CardInstance> onClickAction;
 
-    public void SetUp(CardData data, Action<CardData> onClick = null)
+    public void SetUp(CardInstance data, Action<CardInstance> onClick = null)
     {
         cardData = data;
         onClickAction = onClick;
 
-        var so = data.BaseSO;
+        var so = data.Template;
 
         icon.sprite = so.Sprite;
         nameText.text = so.Name;

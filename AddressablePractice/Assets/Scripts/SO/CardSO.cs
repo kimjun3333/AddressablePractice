@@ -15,7 +15,8 @@ public class CardSheetData : BaseSheetData
 {
     public string CardType; //카드의 타입
     public string Rarity; //카드 등급
-    public int Value;
+    public int Damage;
+    public int Shield;
     public int Cost;
 }
 
@@ -24,7 +25,8 @@ public class CardSO : BaseSO
 {
     public CardType cardType;
     public RarityType rarity;
-    public int value;
+    public int damage;
+    public int shield;
     public int cost;
 
     public override void ApplyData(object sheetData)
@@ -32,8 +34,9 @@ public class CardSO : BaseSO
         if (sheetData is not CardSheetData data) return;
 
         ApplyBaseData(data);
-        
-        value = data.Value;
+
+        damage = data.Damage;
+        shield = data.Shield;
         cost = data.Cost;
         Type = "Card"; //임시
 
