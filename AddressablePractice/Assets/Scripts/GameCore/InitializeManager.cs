@@ -20,6 +20,7 @@ public class InitializeManager : Singleton<InitializeManager>
 
         //테스트
         await DeckManager.Instance.Init();
+        await TurnManager.Instance.Init();
 
         Debug.Log("모든 초기화 완료");
     }

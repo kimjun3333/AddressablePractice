@@ -13,6 +13,7 @@ public class CardInstance //실제 플레이어가 가진 카드 인스턴스
 {
     public string CardName;
     public string InstanceID; //개별 카드 구분용(덱에서 중복 카드 구분)
+
     public CardSO Template; //원본 SO
 
     public int TemporaryCost; //비용 비용이 줄어들수도 있으므로

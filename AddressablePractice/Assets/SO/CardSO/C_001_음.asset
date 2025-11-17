@@ -23,3 +23,4 @@ MonoBehaviour:
   damage: 6
   shield: 6
   cost: 1
+  isExhaust: 0
