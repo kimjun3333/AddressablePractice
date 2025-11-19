@@ -3,34 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour
+public class CardUI : MonoBehaviour, IPointerClickHandler
 {
     [Header("Card UI Components")]
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private TextMeshProUGUI costText;
-    [SerializeField] private Button cardButton;
 
-    private CardInstance cardData;
-    private Action<CardInstance> onClickAction;
+    private CardInstance instance;
 
-    public void SetUp(CardInstance data, Action<CardInstance> onClick = null)
+    //외부에서 UI 세팅하는 함수
+    public void Bind(CardInstance card)
     {
-        cardData = data;
-        onClickAction = onClick;
+        instance = card;
+        UpdateUI();
+    }
 
-        var so = data.Template;
+    public void UpdateUI()
+    {
+        var so = instance.Template;
 
         icon.sprite = so.Sprite;
         nameText.text = so.Name;
         descriptionText.text = so.Description;
-        costText.text = data.TemporaryCost.ToString();
+        costText.text = instance.TemporaryCost.ToString();
+    }
 
-        cardButton.onClick.RemoveAllListeners();
-        if (onClickAction != null)
-            cardButton.onClick.AddListener(() => onClickAction(cardData));
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log($"{instance.CardName} 클릭됨");
+    }
+
+    public CardInstance GetInstance()
+    {
+        return instance;
     }
 }
