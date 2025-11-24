@@ -21,6 +21,6 @@ MonoBehaviour:
   cardType: 0
   rarity: 1
   damage: 12
-  shield: 12
+  shield: 0
   cost: 2
   isExhaust: 0

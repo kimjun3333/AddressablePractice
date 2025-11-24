@@ -18,31 +18,31 @@ MonoBehaviour:
   m_GUID: 5c7fd6459c065db4cb4d4a0a471bc082
   m_SerializeEntries:
   - m_GUID: 3605f89b7536dc94a9b3dab442e9dfad
-    m_Address: "A_001_\uCC9C\uB9AC\uC548"
+    m_Address: "A_001_\uD798\uC758_\uBC18\uC9C0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - Artifact
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 712d8968e5abcf84f8f44366b8f115f2
-    m_Address: "A_002_\uC5D1\uC2A4\uCE7C\uB9AC\uBC84"
+    m_Address: "A_002_\uC18D\uB3C4\uC758_\uBC18\uC9C0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - Artifact
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7bcb8c011ff30374582f769f65c3ec7a
-    m_Address: "A_004_\uC548\uB155\uD558\uC138\uC694"
+    m_Address: "A_004_\uC800\uC8FC\uC758_\uBC18\uC9C0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - Artifact
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89a74d574e59d5741a4da47e598d401b
-    m_Address: "A_003_\uD3EC\uC138\uC774\uB3C8\uC758_\uC0BC\uC9C0\uCC3D"
+    m_Address: "A_003_\uC9C0\uD61C\uC758_\uBC18\uC9C0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - Artifact
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae342fa25c29ceb449eb173b51c27afc
-    m_Address: "A_005_\uBC18\uAC11\uC2B5\uB2C8\uB2E4"
+    m_Address: "A_005_\uB9C8\uB825\uC758_\uBC18\uC9C0"
     m_ReadOnly: 0
     m_SerializedLabels:
     - Artifact

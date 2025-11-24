@@ -20,7 +20,7 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   cardType: 1
   rarity: 2
-  damage: 6
+  damage: 0
   shield: 6
   cost: 1
   isExhaust: 0

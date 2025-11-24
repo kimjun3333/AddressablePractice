@@ -10,6 +10,10 @@ public class DeckManager : Singleton<DeckManager>, IInitializable
     public List<CardInstance> Discard = new();
     public List<CardInstance> Exhaust = new();
 
+    //임시 추가
+    public Transform HandArea;
+    public GameObject CardPrefab;
+
     public async Task Init() //여기서 최초 덱 초기화 하고
     {
         List<CardSO> allCards = DataManager.Instance.GetAllDataOfType<CardSO>();
@@ -52,6 +56,9 @@ public class DeckManager : Singleton<DeckManager>, IInitializable
 
             card.State = CardState.InHand;
             Hand.Add(card);
+
+            //임시추가
+            CreateCardUI(card);
         }
     }
 
@@ -88,5 +95,12 @@ public class DeckManager : Singleton<DeckManager>, IInitializable
             c.State = CardState.InLibrary;
 
         Shuffle(Library);
+    }
+
+    public void CreateCardUI(CardInstance card)
+    {
+        GameObject obj = Instantiate(CardPrefab, HandArea);
+        CardUI ui = obj.GetComponent<CardUI>();
+        ui.Bind(card);
     }
 }
